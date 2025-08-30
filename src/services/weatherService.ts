@@ -33,13 +33,22 @@ export class WeatherService {
     }
     const data = await response.json();
 
-    const locationName = 'Current Location';
+    // Reverse geocoding to get location name
+    const locationResponse = await fetch(`${NOMINATIM_BASE_URL}/reverse?lat=${lat}&lon=${lon}&format=jsonv2`);
+    if (!locationResponse.ok) {
+      console.error("Failed to fetch location name.");
+    }
+    const locationData = await locationResponse.json();
+
+    const locationName = locationData.address.city || locationData.address.town || locationData.address.village || 'Current Location';
+    const countryName = locationData.address.country || '';
+    const regionName = locationData.address.state || '';
 
     return {
       location: {
         name: locationName,
-        country: '',
-        region: '',
+        country: countryName,
+        region: regionName,
         lat: data.latitude,
         lon: data.longitude,
       },

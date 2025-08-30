@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Map, Layers, Play, Pause, RotateCcw, ZoomIn, ZoomOut } from 'lucide-react';
+import { WeatherData } from '../types/weather';
 
-export const WeatherMap: React.FC = () => {
+interface WeatherMapProps {
+  location: WeatherData['location'];
+}
+
+export const WeatherMap: React.FC<WeatherMapProps> = ({ location }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [selectedLayer, setSelectedLayer] = useState('precipitation');
   const [currentFrame, setCurrentFrame] = useState(0);
@@ -162,7 +167,6 @@ export const WeatherMap: React.FC = () => {
             </pattern>
             <radialGradient id="radarGradient" cx="50%" cy="50%" r="50%">
               <stop offset="0%" stopColor="rgba(59, 130, 246, 0.8)" />
-              <stop offset="50%" stopColor="rgba(59, 130, 246, 0.4)" />
               <stop offset="100%" stopColor="rgba(59, 130, 246, 0.1)" />
             </radialGradient>
           </defs>
@@ -275,7 +279,7 @@ export const WeatherMap: React.FC = () => {
           {/* Location marker */}
           <circle cx="200" cy="150" r="6" fill="rgba(239, 68, 68, 1)" stroke="white" strokeWidth="2" />
           <text x="200" y="170" textAnchor="middle" fill="white" fontSize="10" fontWeight="bold">
-            San Francisco
+            {location.name}
           </text>
         </svg>
 

@@ -98,55 +98,49 @@ function App() {
       )}
 
       <main className="max-w-7xl mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Main Content */}
-          <div className="lg:col-span-2 space-y-6">
-            <CurrentWeather data={weatherData} />
+        <div className="space-y-6">
+          <CurrentWeather data={weatherData} />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <HourlyForecast forecast={weatherData.forecast.hourly} />
-              <WeatherChart hourlyData={weatherData.forecast.hourly} />
-            </div>
-
-            <DailyForecast forecast={weatherData.forecast.daily} />
-            <WeatherMap />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <HourlyForecast forecast={weatherData.forecast.hourly} />
+            <WeatherChart hourlyData={weatherData.forecast.hourly} />
           </div>
 
-          {/* Sidebar */}
-          <div className="space-y-6">
-            <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                Pollen Forecast
-              </h3>
-              <div className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-600 dark:text-gray-300">Tree Pollen</span>
-                  <div className="flex items-center space-x-2">
-                    <div className="w-16 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                      <div className="bg-yellow-500 h-2 rounded-full" style={{ width: '60%' }}></div>
-                    </div>
-                    <span className="text-sm font-medium text-gray-900 dark:text-white">Medium</span>
+          <DailyForecast forecast={weatherData.forecast.daily} />
+          <WeatherMap location={weatherData.location} />
+          {/* Pollen Forecast Section */}
+          <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+              Pollen Forecast
+            </h3>
+            <div className="space-y-3">
+              <div className="flex justify-between items-center">
+                <span className="text-gray-600 dark:text-gray-300">Tree Pollen</span>
+                <div className="flex items-center space-x-2">
+                  <div className="w-16 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                    <div className="bg-yellow-500 h-2 rounded-full" style={{ width: '60%' }}></div>
                   </div>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-600 dark:text-gray-300">Grass Pollen</span>
-                  <div className="flex items-center space-x-2">
-                    <div className="w-16 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                      <div className="bg-green-500 h-2 rounded-full" style={{ width: '30%' }}></div>
-                    </div>
-                    <span className="text-sm font-medium text-gray-900 dark:text-white">Low</span>
-                  </div>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-600 dark:text-gray-300">Weed Pollen</span>
-                  <div className="flex items-center space-x-2">
-                    <div className="w-16 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                      <div className="bg-orange-500 h-2 rounded-full" style={{ width: '80%' }}></div>
-                    </div>
-                    <span className="text-sm font-medium text-gray-900 dark:text-white">High</span>
-                  </div>
+                  <span className="text-sm font-medium text-gray-900 dark:text-white">Medium</span>
                 </div>
               </div>
+              <div className="flex justify-between items-center">
+                <span className="text-gray-600 dark:text-gray-300">Grass Pollen</span>
+                <div className="flex items-center space-x-2">
+                  <div className="w-16 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                    <div className="bg-green-500 h-2 rounded-full" style={{ width: '30%' }}></div>
+                  </div>
+                  <span className="text-sm font-medium text-gray-900 dark:text-white">Low</span>
+                </div>
+              </div>
+              {/* <div className="flex justify-between items-center">
+                <span className="text-gray-600 dark:text-gray-300">Weed Pollen</span>
+                <div className="flex items-center space-x-2">
+                  <div className="w-16 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                    <div className="bg-orange-500 h-2 rounded-full" style={{ width: '80%' }}></div>
+                  </div>
+                  <span className="text-sm font-medium text-gray-900 dark:text-white">High</span>
+                </div>
+              </div> */}
             </div>
           </div>
         </div>
