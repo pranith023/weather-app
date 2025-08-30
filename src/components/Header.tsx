@@ -30,7 +30,7 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Logo */}
           <div className="flex-shrink-0 mb-2 sm:mb-0">
             <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              WeatherPro
+              Breezeaura
             </h1>
           </div>
 
